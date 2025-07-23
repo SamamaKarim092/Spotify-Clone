@@ -1,21 +1,27 @@
-import { SignedOut, SignInButton, SignedIn, UserButton } from "@clerk/clerk-react";
-import {Button} from "./components/ui/button";
+import { Routes, Route } from "react-router-dom";
+import  Homepage  from "./pages/home/HomePage";
+import  AuthCallbackPage  from "./pages/auth-callback/AuthCallback"; 
+import axios from "axios";
 
 function App() {
+// token =>
+// const getSomeData = async () => {
+//   const res = await axios.get('/users', {
+//     headers: {
+//       "Authorization": `Bearer ${('token')}`
+//     }
+//   });
+//   console.log(res);
+// }
+
   return (
     <>
-  <header>
-      <SignedOut>
-        <SignInButton>
-          <Button>Sign In</Button>
-        </SignInButton>
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
-    </header>
-      
-    
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/auth-callback" element={<AuthCallbackPage />} />
+      </Routes>
+
+
     </>
   );
 }
