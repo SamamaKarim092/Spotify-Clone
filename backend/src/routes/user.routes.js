@@ -1,10 +1,10 @@
 import { Router } from 'express';
+import { getAllUsers } from '../controller/user.controller.js';
+import { protectRoute } from '../middleware/auth.middleware.js';
 
 const router = Router();
 
-router.get('/', (req, res) => {
-    req.auth.userId;
-    res.send('User route with get method');
-});
+router.get('/', protectRoute, getAllUsers);
+// todo: get messages between two users getMessages
 
 export default router;
