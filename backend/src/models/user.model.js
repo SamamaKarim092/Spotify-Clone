@@ -1,21 +1,28 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
+const userSchema = new mongoose.Schema(
+  {
+    fullName: {
+      type: String,
+      required: true,
+    },
     email: {
-    type: String,
-    required: true,
-    unique: true,
+      type: String,
+      required: false, // Made optional
+      unique: true,
+      sparse: true, // Allows multiple null values
+    },
+    clerkId: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    image: {
+      type: String,
+      default: "",
+    },
   },
-  clerkId: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-}, {timestamps: true });
-// createdAt , updatedAt (iska matlb kai user kab sai aaya wagira)
+  { timestamps: true }
+);
 
 export const User = mongoose.model("User", userSchema);
