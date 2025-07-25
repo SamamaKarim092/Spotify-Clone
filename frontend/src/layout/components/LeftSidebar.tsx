@@ -88,6 +88,7 @@ const LeftSidebar = () => {
               ))
             )}
           </div>
+          
         </ScrollArea>
       </div>
     </div>
