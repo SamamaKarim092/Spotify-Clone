@@ -2,7 +2,7 @@ import TopBar from "@/components/TopBar"
 
 const homepage = () => {
   return (
-    <div>
+    <div className="rounded-md overflow-hidden">
       <TopBar />
     </div>
   )
