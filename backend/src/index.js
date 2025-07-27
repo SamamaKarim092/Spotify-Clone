@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import { clerkMiddleware } from "@clerk/express";
-import fileUpload from "express-fileupload";
+// Remove fileUpload import - we'll use multiparty in controllers instead
 import path from "path";
 import cors from "cors";
 import fs from "fs";
@@ -22,46 +22,44 @@ dotenv.config();
 
 const __dirname = path.resolve();
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 const httpServer = createServer(app);
 initializeSocket(httpServer);
 
+// Updated CORS for production
 app.use(
 	cors({
-		origin: "http://localhost:3000",
+		origin: process.env.NODE_ENV === "production" 
+			? ["https://your-vercel-domain.vercel.app", "https://your-custom-domain.com"] 
+			: "http://localhost:3000",
 		credentials: true,
 	})
 );
 
-app.use(express.json()); // to parse req.body
+app.use(express.json({ limit: '10mb' })); // to parse req.body
 app.use(clerkMiddleware()); // this will add auth to req obj => req.auth
-app.use(
-	fileUpload({
-		useTempFiles: true,
-		tempFileDir: path.join(__dirname, "tmp"),
-		createParentPath: true,
-		limits: {
-			fileSize: 10 * 1024 * 1024, // 10MB  max file size
-		},
-	})
-);
 
-// cron jobs
-const tempDir = path.join(process.cwd(), "tmp");
-cron.schedule("0 * * * *", () => {
-	if (fs.existsSync(tempDir)) {
-		fs.readdir(tempDir, (err, files) => {
-			if (err) {
-				console.log("error", err);
-				return;
-			}
-			for (const file of files) {
-				fs.unlink(path.join(tempDir, file), (err) => {});
-			}
-		});
-	}
-});
+// Remove express-fileupload middleware - we'll handle multipart in controllers
+// Don't use fileUpload middleware here
+
+// Cron jobs - but skip in serverless environment
+if (process.env.NODE_ENV !== "production") {
+	const tempDir = path.join(process.cwd(), "tmp");
+	cron.schedule("0 * * * *", () => {
+		if (fs.existsSync(tempDir)) {
+			fs.readdir(tempDir, (err, files) => {
+				if (err) {
+					console.log("error", err);
+					return;
+				}
+				for (const file of files) {
+					fs.unlink(path.join(tempDir, file), (err) => {});
+				}
+			});
+		}
+	});
+}
 
 app.use("/api/users", userRoutes);
 app.use("/api/admin", adminRoutes);
@@ -79,10 +77,20 @@ if (process.env.NODE_ENV === "production") {
 
 // error handler
 app.use((err, req, res, next) => {
-	res.status(500).json({ message: process.env.NODE_ENV === "production" ? "Internal server error" : err.message });
+	console.log("Error:", err);
+	res.status(500).json({ 
+		message: process.env.NODE_ENV === "production" ? "Internal server error" : err.message 
+	});
 });
 
-httpServer.listen(PORT, () => {
-	console.log("Server is running on port " + PORT);
-	connectDB();
-});
+// For Vercel serverless
+export default app;
+if (process.env.NODE_ENV === "production") {
+	// Export the app for Vercel
+} else {
+	// Local development server
+	httpServer.listen(PORT, () => {
+		console.log("Server is running on port " + PORT);
+		connectDB();
+	});
+}
