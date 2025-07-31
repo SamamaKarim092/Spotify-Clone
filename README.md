@@ -9,9 +9,8 @@ Welcome to **Spotify Clone**, a full-stack music streaming platform inspired by 
 
 ## 📸 UI Preview (Admin Panel)
 
-> _(Add your screenshot below by uploading it in the repo and replacing the link here)_
+<img width="1918" height="916" alt="image" src="https://github.com/user-attachments/assets/e50e3cc6-2dd1-44dc-9b6e-c91e53f27e4c" />
 
-![Admin Dashboard Screenshot](./screenshots/admin-dashboard.png)
 
 ---
 
