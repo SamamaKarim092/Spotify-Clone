@@ -73,13 +73,15 @@ server.js
 ```bash
 git clone https://github.com/yourusername/spotify-clone.git
 cd spotify-clone
+
 # For both client and server
 npm install
+
 # Client (React + TypeScript)
 npm run dev
 
 # Server (Node.js + JavaScript with nodemon)
-npm run server
+npm run dev
 
 ---
 
