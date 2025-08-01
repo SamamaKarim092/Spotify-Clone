@@ -33,6 +33,7 @@ Welcome to **Spotify Clone**, a full-stack music streaming platform inspired by 
 ### **Frontend (TypeScript)**
 - React ⚛️ + TypeScript 🧑‍💻
 - Tailwind CSS 💨
+- Shadcn/UI for modern UI components 🧩
 - Zustand for state management 🧠
 - Axios for API requests ⚡
 - Lucide React for icons ✨
