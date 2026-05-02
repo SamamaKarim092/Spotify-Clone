@@ -16,16 +16,15 @@ Welcome to **Spotify Clone**, a full-stack music streaming platform inspired by 
 
 ## ✨ Features
 
-- 🎸 **Listen to music** — play, pause, skip tracks
-- 🔈 **Adjust volume** with a responsive slider
-- 👨🏼‍💼 **Admin Dashboard** — manage albums & songs
-- 💬 **Real-time Chat App** integrated into the platform
-- 👀 **Live Activity Feed** — see what others are listening to
-- 👤 **Online/Offline Status** indicators
-- 📊 **Analytics Page** — aggregate data & insights
-- 🔐 **User Authentication** with Clerk
-- 🚀 ...and much more!
-
+- **Listen to music** — play, pause, skip tracks
+- **Adjust volume** with a responsive slider
+- **Admin Dashboard** — manage albums & songs
+- **Real-time Chat App** integrated into the platform
+- **Live Activity Feed** — see what others are listening to
+- **Online/Offline Status** indicators
+- **Analytics Page** — aggregate data & insights
+- **User Authentication** with Clerk
+  
 ---
 
 ## 🧑‍💻 Tech Stack
