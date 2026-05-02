@@ -31,21 +31,21 @@ Welcome to **Spotify Clone**, a full-stack music streaming platform inspired by 
 ## 🧑‍💻 Tech Stack
 
 ### **Frontend (TypeScript)**
-- React ⚛️ + TypeScript 🧑‍💻
-- Tailwind CSS 💨
-- Shadcn/UI for modern UI components 🧩
-- Zustand for state management 🧠
-- Axios for API requests ⚡
-- Lucide React for icons ✨
-- Zod for form validation 🧼
+- React + TypeScript 
+- Tailwind CSS 
+- Shadcn/UI for modern UI components 
+- Zustand for state management 
+- Axios for API requests 
+- Lucide React for icons 
+- Zod for form validation 
 
 ### **Backend (JavaScript)**
-- Node.js + Express 🚀
-- Nodemon for development ⚙️
-- Cloudinary for media storage ☁️
-- Clerk for authentication 🔐
-- WebSockets for real-time chat 📡
-
+- Node.js + Express 
+- Nodemon for development 
+- Cloudinary for media storage 
+- Clerk for authentication 
+- WebSockets for real-time chat
+  
 ---
 
 ## 📁 Project Structure
